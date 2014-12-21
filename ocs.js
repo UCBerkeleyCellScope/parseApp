@@ -103,19 +103,16 @@ $(function() {
         console.log("Rendering PLV...");
         var that = this;
         var patients = new PatientList();
-        //this.patients = patients;
 
-        //will switch this.patients.query = new Parse.Query(Patient);
-        //this.patients.query.equalTo("user", Parse.User.current());
-        //this.patients.fetch();
-        patients.fetch({
+        patients.fetch({  
           success: function(patients)
           {           
+            console.log(JSON.stringify(patients, null, 4));
             this.studies = _.uniq(patients.pluck("study"));
             console.log(JSON.stringify(this.studies, null, 4));
 
             var template = _.template($('#patient-list-template').html(),  
-              {patients: patients.models, studies: this.studies, selected:"None"}); // patients.models
+              {patients: patients.models.reverse(), studies: this.studies, selected:"None"}); // patients.models
             that.$el.html(template); //inject html into the bound element
           },
           error: function(collection, error)
@@ -128,7 +125,15 @@ $(function() {
       selectStudy: function(){
         var studyName = $( "#studySelect option:selected" ).text();
         var url = "filter/" + studyName;
-        router.navigate(url,{trigger: true});
+        if(studyName == "All")
+        {
+          router.navigate("home",{trigger: true});
+        }
+        else
+        {
+          router.navigate(url,{trigger: true});
+        }
+
       },
 
       filter: function(options){
@@ -140,6 +145,7 @@ $(function() {
         //var Patient = Parse.Object.extend("Patient");
         var q = new Parse.Query(Patient);
         q.equalTo("study", options.studyName);
+        q.descending("examDate");
         q.find({
           success: function(patients)
           {

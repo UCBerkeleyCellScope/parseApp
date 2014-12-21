@@ -52,6 +52,8 @@
       <h4> Study
         <select id="studySelect">
 
+         <option>All</option>
+
           <% _.each(studies, function(study) { %>
              <% if(study == selected) {%>
                 <option selected><%= study %></option>
