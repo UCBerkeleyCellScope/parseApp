@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  </script>
+  <title>change demo</title>
+  <style>
+  div {
+    color: red;
+  }
+  </style>
+
+</head>
+<body>
+ 
+<select name="sweets">
+  <option>Chocolate</option>
+  <option selected="selected">Candy</option>
+  <option>Taffy</option>
+  <option selected="selected">Caramel</option>
+  <option>Fudge</option>
+  <option>Cookie</option>
+</select>
+<div></div>
+ 
+<script>
+$( "select" )
+  .change(function () {
+    alert("HEY!");
+  })
+</script>
+ 
+</body>
+</html>
