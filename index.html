@@ -34,6 +34,27 @@
     a{
       color:#009854;
     }
+      img.img-thumbnail{
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+          border: 0px;
+          border-radius: 0px;
+          
+      }
+      img.img-detail{
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+          border: 0px;
+          border-radius: 0px;
+          padding: 1px;
+      }
+      
   </style>
 
   <div class="container">
@@ -70,9 +91,11 @@
     <div class="col-md-4">
       <h4 class="sort"> Sort By: 
       <select>
-        <option value="date">Date</option>
-        <option value="name">Name</option>
-        <option value="id">ID</option>
+        <option value="date">Exam Date</option>
+        <option value="examID">Exam #</option>
+        <option value="patientID">Patient ID</option>
+        <option value="patientName">Patient Name</option>
+        
       </select>
       </h4>
     </div>
@@ -82,7 +105,8 @@
     <table class = "table table-striped table-hover">  
       <thead>
       <tr>
-        <th>Patient ID </th>
+        <th>Study</th>
+        <th>Patient ID</th>
         <th>Patient Name</th>
         <th>CellScope</th>
         <th>Exam #</th>
@@ -94,7 +118,11 @@
       <tbody>
         <% _.each(patients, function(patient) { %>
           <tr>
-
+            <td>
+              <a href="#patient/<%= patient.study %>">
+                  <p><%= patient.get("study") %></p>
+              </a>
+            </td>
             <td>
               <a href="#patient/<%= patient.id %>">
                 <p><%= patient.get("patientID") %></p>
@@ -191,7 +219,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -206,7 +234,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -221,7 +249,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -236,7 +264,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -251,7 +279,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -282,7 +310,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -297,7 +325,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -312,7 +340,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -327,7 +355,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -342,7 +370,7 @@
           <% var href2 = eyeImage.id %>
           <a href="#patient/<%=href1%>/image/<%=href2%>">
           <% var url=eyeImage.get("Image").url(); %>
-          <img class="img-responsive" src="<%=url%>">
+          <img class="img-thumbnail" src="<%=url%>">
           </a>
         </div>
       <% }); %>
@@ -359,7 +387,7 @@
       <div class="col-xs-9">
         <h1>
         <% var url=eyeImage.get("Image").url() %>
-        <img src="<%=url%>">
+        <img class="img-detail" src="<%=url%>">
         </h1>  
       </div>
 
